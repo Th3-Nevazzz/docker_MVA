@@ -1,0 +1,10 @@
+---
+title: untitled
+format: html
+---
+
+## Encabezado
+
+```{python}
+print("Hello world")
+```
