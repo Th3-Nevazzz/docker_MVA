@@ -1,0 +1,111 @@
+---
+title: "Nutricion recomendada"
+format: 
+    html:
+        toc: true
+        fontsize: 1.25em
+        html-math-method: katex
+        embed-resources: true
+        self-contained-math: true
+        df-print: kable
+---
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+```{python}
+nutrition = pd.read_csv("../data/nutrition.csv")
+nutrition.head()
+```
+```{python}
+mu_0 = __________
+```
+```{python}
+X = __________
+```
+```{python}
+n = __________
+X_bar = __________
+S = __________
+```
+```{python}
+t2 = __________
+```
+```{python}
+alpha = __________
+p = __________
+```
+```{python}
+```
+```{python}
+f_quantile = __________(__________, __________, __________)
+```
+```{python}
+__________ > __________
+```
+```{python}
+
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
