@@ -1,0 +1,222 @@
+---
+title: "Nutricion recomendada"
+format: 
+    html:
+        toc: true
+        fontsize: 1.25em
+        html-math-method: katex
+        embed-resources: true
+        self-contained-math: true
+        df-print: kable
+---
+
+```{python}
+import pandas as pd
+import numpy as np
+from scipy import stats
+```
+
+```{python}
+skulls = pd.read_csv('../data/skulls.csv')
+skulls.head()
+```
+```{python}
+X = skulls[skulls['sex'] == "male"].drop(columns = "sex")
+X.head()
+```
+```{python}
+Y = skulls[skulls['sex'] == "female"].drop(columns = "sex")
+Y.head()
+```
+```{python}
+def HotellingsT2Test(X, Y):
+    '''Realiza la prueba T2 de Hotelling para dos muestras
+
+       Parámetros
+       ----------
+       X: pd.DataFrame
+           Matriz de datos de la primera población
+       Y: pd.DataFrame
+           Matriz de datos de la segunda población
+
+       Output
+       ------
+       statistic: float
+           Valor de la estadística de prueba
+       p-value: float
+           P-value resultante
+    '''
+
+    ## Encontramos los tamaños de
+    ## muestra y el número de variables
+    n, p = X.shape
+    m = Y.shape[0]
+
+    ## Calculamos la diferencia de medias
+    ## muestrales, las matrices de covarianza
+    ## y la matriz de covarianza agrupada
+    delta = (X.mean(axis = 0) - Y.mean(axis = 0)).values
+    Sx = X.cov()
+    Sy =Y.cov()
+    S_pooled = ((n-1)* Sx + (m-1) * Sy)/(n+m-2)
+
+    ## Calculamos la estadística de prueba
+    t2 = n*m/(n+m)*(delta @ np.linalg.inv(S_pooled) @ delta)
+    statistic = (n + m - p - 1)/(p*(n + m -2))*t2
+
+    ## Calculamos el p-value
+    p_value = 1 - stats.f.cdf(statistic, p, n+m-p-1)
+
+    ## Imprimimos el resultado
+    print(f"Estadística de prueba: {statistic}\nGrados de libertad: {p}, {n + m - p - 1}\np-value: {p_value}")
+
+    return statistic, p_value
+```
+```{python}
+HotellingsT2Test(X, Y)
+```
+```{python}
+ci = stats.ttest_1samp(nutrition['calcium'], __________).__________(confidence_level = __________)
+```
+```{python}
+from scipy import stats
+def multiple_t_testci(X, mu_0, alpha = 0.05):
+    '''Calcula intervalos de confianza basados en la prueba t para múltiples variables
+
+       Parámetros
+       ----------
+       X: pd.DataFrame
+           Matriz de datos
+       mu_0: np.array
+           Arreglo con los valores hipotéticos de las medias
+       alpha: float
+           Nivel de significancia
+
+       Output
+       ------
+       _: pd.DataFrame
+           Data frame con los nombres de las variables, límites inferior y superior del intervalo de confianza y valor de la media hipotética
+    '''
+
+    ## Creamos una lista vacía para
+    ## ir guardando los resultados
+    results = __________
+
+    ## Realizamos un ciclo for para
+    ## encontrar los intervalos para
+    ## cada una de las variables
+    for i, col in enumerate(__________):
+        ## Extraemos la variable
+        data = __________[__________]
+
+        ## Calculamos la prueba t
+        res = __________(__________, __________)
+
+        ## Encontramos el intervalo de confianza
+        ci = __________(__________)
+
+        ## Añadimos el resultado como
+        ## un diccionario a la lista
+        results.append({"variable": __________,
+                        "lower": __________,
+                        "upper": __________,
+                        "recommended": __________})
+
+    return __________
+```
+```{python}
+__________(__________, __________)
+```
+```{python}
+def bonferroni(X, alpha = 0.05):
+    '''Calcula intervalos de confianza simultáneos con corrección de Bonferroni
+
+       Parámetros
+       ----------
+       X: pd.DataFrame
+           Matriz de datos
+       alpha: float
+           Nivel de significancia
+
+       Output
+       ------
+       res: pd.DataFrame
+           Data frame con los nombres de las variables, sus medias muestrales y los límites inferior y superior del intervalo de confianza con corrección de Bonferroni
+    '''
+    ## Encontramos el tamaño de
+    ## muestra y número de variables
+    n, p = __________
+
+    ## Extraemos los nombres de las variables
+    cols = __________
+
+    ## Calculamos las medias
+    ## muestrales y las varianzas
+    ## muestrales de cada variable
+    mm = __________
+    ss = __________
+
+    ## Encontramos el cuantil
+    ## de la distribución t
+    tt = __________
+
+    ## Encontramos los límites
+    ## inferior y superior del
+    ## intervalo corregido
+    lower = __________
+    upper = __________
+
+    ## Juntamos los resultados
+    ## en un solo data frame
+    res = pd.DataFrame({"variable": __________,
+                        "mean": __________,
+                        "lower": __________,
+                        "upper": __________})
+
+    return __________
+```
+```{python}
+__________(__________)
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
+```{python}
+```
